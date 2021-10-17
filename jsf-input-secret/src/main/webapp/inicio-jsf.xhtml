@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://xmlns.jcp.org/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	<head>
+		<title>h:inputSecret example</title>
+		
+		<script>
+
+			function showPassword(b) {
+				if (b){
+					document.getElementById('loginForm:contrasena').type = 'text';
+					document.getElementById('loginForm:show').style.display = 'none';
+					document.getElementById('loginForm:hide').style.display = 'inline';
+				} else {
+					document.getElementById('loginForm:contrasena').type = 'password';
+					document.getElementById('loginForm:show').style.display = 'inline';
+					document.getElementById('loginForm:hide').style.display = 'none';
+				}
+			}
+
+			function changeCursor(obj, cursorStyle) {
+				obj.style.cursor = cursorStyle;
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<h:form id="loginForm">
+			<h:panelGrid columns="2">
+				<h:panelGroup>
+					<h:outputLabel value="Nombre de Usuario: " for="nombreUsuario" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText id="nombreUsuario" value="#{exampleBean.nombreUsuario}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputLabel value="Contraseña: " for="contrasena" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputSecret id="contrasena" value="#{exampleBean.contrasena}" />
+					<h:graphicImage id="show" library="images" name="show.jpg" width="35px" style="vertical-align:middle;" onmouseover="changeCursor(this, 'pointer');" onmouseout="changeCursor(this, 'default');" onclick="showPassword(true);" />
+					<h:graphicImage id="hide" library="images" name="hide.jpg" width="35px" style="display:none;vertical-align:middle;" onmouseover="changeCursor(this, 'pointer');" onmouseout="changeCursor(this, 'default');" onclick="showPassword(false);" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</body>
+</html>
